@@ -1,0 +1,20 @@
+{
+  "node": "n8n-nodes-tenderlead.tenderLead",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Productivity"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://tenderlead.co.uk/api-docs"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://tenderlead.co.uk/api-docs"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "TenderLead daily brief review (manual, read-only)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "Manual trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getDailyBrief"
+      },
+      "id": "brief",
+      "name": "Get daily brief",
+      "type": "n8n-nodes-tenderlead.tenderLead",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const brief = $input.first().json;\nif (!brief || typeof brief.generated_at !== 'string' || !['starter', 'pro', 'team'].includes(brief.tier) || !Array.isArray(brief.opportunities)) throw new Error('Unexpected TenderLead response');\nreturn [{ json: { generatedAt: brief.generated_at, tier: brief.tier, opportunityCount: brief.opportunities.length, opportunities: brief.opportunities } }];"
+      },
+      "id": "review",
+      "name": "Review daily brief",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual trigger": {
+      "main": [
+        [
+          {
+            "node": "Get daily brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get daily brief": {
+      "main": [
+        [
+          {
+            "node": "Review daily brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
