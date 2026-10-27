@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-tenderlead",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read the authorised account\u2019s TenderLead daily tender brief in n8n.",
   "license": "MIT",
   "homepage": "https://tenderlead.co.uk/api-docs",

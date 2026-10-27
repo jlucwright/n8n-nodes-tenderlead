@@ -10,7 +10,7 @@ The credential test reads your daily brief. An empty opportunities array is vali
 
 ## Read a brief
 
-Install this community node on a self-hosted n8n instance after publication, then add TenderLead and choose **Get Daily Brief**. The response remains one item containing `generated_at`, `tier` and `opportunities`. It is not split into individual tenders, so empty briefs remain visible.
+Install this community node on a self-hosted n8n instance, then add TenderLead and choose **Get Daily Brief**. The response remains one item containing `generated_at`, `tier` and `opportunities`. It is not split into individual tenders, so empty briefs remain visible.
 
 The inactive `examples/daily-brief-review.json` workflow runs manually, reads the brief and counts returned opportunities. It has no credentials, message sender or destination writer. Review source notices before deciding to bid. Missing value, buyer or deadline is unknown; a score is not a winning probability. The generated-at time is response time, not source freshness.
 
@@ -27,6 +27,6 @@ Do not turn these failures into a successful empty brief. Check https://tenderle
 
 ## Development
 
-Node 22.22 or later: `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`. No runtime dependencies. The official development toolchain currently reports 23 audit findings (19 high, 4 moderate); none are runtime dependencies. Review upstream fixes before building with untrusted inputs. This source candidate is not yet published, verified or listed by n8n.
+Node 22.22 or later: `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`. No runtime dependencies. The official development toolchain currently reports 23 audit findings (19 high, 4 moderate); none are runtime dependencies. Review upstream fixes before building with untrusted inputs. The package is published on npm from GitHub Actions with provenance. It is not yet verified or listed by n8n.
 
-This is pre-release source. The manual workflow passed in n8n 2.45.4 with an existing fictional QA account and a dedicated briefs:read token. It returned a valid empty brief; non-empty production recommendations were not exercised. The QA token was revoked and subsequent reads returned 401. The AI-tool flag is declared; AI-agent tool execution has not been demonstrated.
+The manual workflow passed in n8n 2.45.4 with an existing fictional QA account and a dedicated briefs:read token. It returned a valid empty brief; non-empty production recommendations were not exercised. The QA token was revoked and subsequent reads returned 401. The AI-tool flag is declared; AI-agent tool execution has not been demonstrated.
