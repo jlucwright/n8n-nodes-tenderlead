@@ -27,6 +27,6 @@ Do not turn these failures into a successful empty brief. Check https://tenderle
 
 ## Development
 
-Node 22.22 or later: `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`. No runtime dependencies. See the parent release receipt for verification boundaries. This source candidate is not yet published, verified or listed by n8n.
+Node 22.22 or later: `npm ci --ignore-scripts`, `npm run build`, `npm run lint`, `npm test`. No runtime dependencies. The official development toolchain currently reports 23 audit findings (19 high, 4 moderate); none are runtime dependencies. Review upstream fixes before building with untrusted inputs. This source candidate is not yet published, verified or listed by n8n.
 
-This is pre-release source. Real n8n execution and an authenticated production read remain unverified. The AI-tool flag is declared; AI-agent tool execution has not been demonstrated.
+This is pre-release source. The manual workflow passed in n8n 2.45.4 with an existing fictional QA account and a dedicated briefs:read token. It returned a valid empty brief; non-empty production recommendations were not exercised. The QA token was revoked and subsequent reads returned 401. The AI-tool flag is declared; AI-agent tool execution has not been demonstrated.
